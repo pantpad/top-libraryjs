@@ -20,18 +20,30 @@ function appendBookToLibrary(book){
     myLibrary.push(book ?? new Book());
 }
 
-const caste = document.getElementById('library');
+const domLibrary = document.querySelector('.library');
 
 function displayBooksOnPage(){
-    domLibrary.appendChild(createDiv('card','topolino'));
+    domLibrary.appendChild(createCard());
 }
 
-function createDiv(...args){
+function createDiv(input, ...args){
     const div = document.createElement('div');
+    div.textContent = input;
 
     for(let i = 0; i < args.length; i++){
         div.classList.add(args[i]);
     }
 
     return div;
+}
+
+function createCard(){
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.appendChild(createDiv('ciaooo',['child']));
+    card.appendChild(createDiv('ciaooo',['child']));
+    card.appendChild(createDiv('ciaooo',['child']));
+    card.appendChild(createDiv('ciaooo',['child']));
+    card.appendChild(createDiv('ciaooo',['child']));
+    return card;
 }
