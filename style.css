@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+:root{
+    --read-color: #9fff9c;
+    --unread-color: #ff9c9c;
+}
 *{
     border:0;
     margin:0;
@@ -8,8 +11,35 @@
     font-family: 'Roboto',sans-serif;
 }
 
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.button{
+    border: 1px solid #555; 
+    padding: 1em;
+    border-radius: 5px;
+    position: relative;
+}
+.button::before{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+}
+.button:hover{
+    cursor: pointer;
+}
+.button:hover::before{
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
 section{
-    background-color: aliceblue;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -22,12 +52,36 @@ section{
     background-color: white;
     padding: 1em;
     border: 1px solid #ccc;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
+    border-radius: 10px;
+    gap: 5px;
+    width: 250px;
 }
 
 .card-item{
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0.5em;
+}
+
+.box{
+    background-color: var(--read-color);
+    border-radius: 5px;
+    position: relative;
+}
+
+.box::before{
+    content:'';
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-radius: 5px;
+}
+
+.box:hover::before{
+    background-color: rgba(0, 0, 0, 0.15);
 }

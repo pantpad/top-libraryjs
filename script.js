@@ -23,15 +23,8 @@ function appendBookToLibrary(book){
 
 //--ended--book--section--//
 
-
 const domLibrary = document.querySelector('.library');
-
-//draw all books inside the library array onto the page 
-function drawAllBooksOnPage(){
-    myLibrary.forEach((book,index) => {
-        domLibrary.appendChild(createCard(book));
-    });
-}
+const addBtn = document.getElementById('addBtn');
 
 function createDiv(input, ...args){
     const div = document.createElement('div');
@@ -47,15 +40,35 @@ function createDiv(input, ...args){
 function createCard(book){
     const card = document.createElement('div');
     card.className = 'card';
-    
-    card.appendChild(createDiv(Object.values(book).at(0),['card-item']));
-    card.appendChild(createDiv(Object.values(book).at(1),['card-item']));
-    card.appendChild(createDiv(Object.values(book).at(2),['card-item']));
-    card.appendChild(createDiv(Object.values(book).at(3),['card-item']));
+
+    for(let i = 0; i < Object.values(book).length;i++){
+        card.appendChild(createDiv(Object.values(book).at(i),['card-item']));
+    }
+    card.querySelector('div:nth-child(4)').classList.add('box');
     card.appendChild(createDiv('REMOVE',['card-item']));
     return card;
 }
 
-//object.values(mylibrary[0])
-//Object.values(myLibrary[0]).at(0);
-//Object.values(book).at(0);
+//draw all books inside the library array onto the page 
+function drawAllBooksOnPage(){
+    myLibrary.forEach((book,index) => {
+        domLibrary.appendChild(createCard(book));
+    });
+}
+
+addBtn.addEventListener('click',(e) => {
+    //apro sezione per chiedere dati ad utente
+    prompt('wela inserisci');
+    //creo nuovo libro con dati utente
+
+    //inserisco libro all'interno dell'array
+    appendBookToLibrary(new Book());
+    //chiudo sezione per chiedere dati ad utente
+
+    //l'aggiunta di un elemento all'array trigghera un append grafico dell'ultimo libro.
+    appendBookToPage(new Book());
+});
+
+function appendBookToPage(book){
+    domLibrary.appendChild(createCard(book));
+}
