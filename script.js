@@ -16,14 +16,21 @@ const firstBook = new Book("Il signore","asdsad","333",false);
 
 const myLibrary = [];
 
+//add to array
 function appendBookToLibrary(book){
     myLibrary.push(book ?? new Book());
 }
 
+//--ended--book--section--//
+
+
 const domLibrary = document.querySelector('.library');
 
+//draw all books inside the library array onto the page 
 function displayBooksOnPage(){
-    domLibrary.appendChild(createCard());
+    myLibrary.forEach((book,index) => {
+        domLibrary.appendChild(createCard(book));
+    });
 }
 
 function createDiv(input, ...args){
@@ -37,13 +44,18 @@ function createDiv(input, ...args){
     return div;
 }
 
-function createCard(){
+function createCard(book){
     const card = document.createElement('div');
     card.className = 'card';
-    card.appendChild(createDiv('ciaooo',['child']));
-    card.appendChild(createDiv('ciaooo',['child']));
-    card.appendChild(createDiv('ciaooo',['child']));
-    card.appendChild(createDiv('ciaooo',['child']));
-    card.appendChild(createDiv('ciaooo',['child']));
+    
+    card.appendChild(createDiv(Object.values(book).at(0),['card-item']));
+    card.appendChild(createDiv(Object.values(book).at(1),['card-item']));
+    card.appendChild(createDiv(Object.values(book).at(2),['card-item']));
+    card.appendChild(createDiv(Object.values(book).at(3),['card-item']));
+    card.appendChild(createDiv('REMOVE',['card-item']));
     return card;
 }
+
+//object.values(mylibrary[0])
+//Object.values(myLibrary[0]).at(0);
+//Object.values(book).at(0);
