@@ -12,6 +12,10 @@ Book.prototype.info = function(){
     console.log(this.title +","+ this.author +","+ this.pages +","+ this.read+".");
 }
 
+Book.prototype.toggleRead = function(){
+    this.read = !this.read;
+}
+
 const firstBook = new Book("Il signore","asdsad","333",false);
 
 let myLibrary = [];
@@ -43,17 +47,16 @@ function createDiv(input, ...args){
 function createCard(book){
     const card = document.createElement('div');
     card.className = 'card';
-    let currentTitle = '';
-    for(let i = 0; i < Object.values(book).length;i++){
-        if(i==0){
-            card.appendChild(createDiv(Object.values(book).at(i),'card-item','title'));
-            currentTitle = Object.values(book).at(0);
-        }else{
-            card.appendChild(createDiv(Object.values(book).at(i),'card-item'));
-        }
-    }
+    let currentTitle = book.title;
 
-    card.querySelector('div:nth-child(4)').classList.add('box');
+    card.appendChild(createDiv(book.title,'card-item'));
+    card.appendChild(createDiv(book.author,'card-item'));
+    card.appendChild(createDiv(book.pages,'card-item'));
+    card.appendChild(createDiv((book.read ? 'READ' : 'NOT READ'),'card-item','box',(book.read ? 'box' : 'red-box'))).addEventListener('click',(e)=>{
+        book.toggleRead();
+        e.target.textContent = (book.read? 'READ': 'NOT READ');
+        e.target.classList.toggle('red-box');
+    });
     card.appendChild(createDiv('REMOVE','card-item','remove-box')).addEventListener('click',(e) => {
         console.log(e.target.parentElement);
         domLibrary.removeChild(e.target.parentElement);
@@ -81,9 +84,9 @@ addBookBtn.addEventListener('click',(e) =>{
     const titleInput = document.getElementById('title').value;
     const authorInput = document.getElementById('author').value;
     const pagesInput = document.getElementById('pages').value;
-    const hasBeenReadInput = document.getElementById('hasBeenRead').value;
+    const hasBeenReadInput = document.getElementById('hasBeenRead').checked;
 
-    const newBook = new Book(titleInput,authorInput,pagesInput,(hasBeenReadInput ? 'READ' : 'NOT READ'));
+    const newBook = new Book(titleInput,authorInput,pagesInput,hasBeenReadInput);
     modal.close('');
     appendBookToPage(newBook);
     appendBookToLibrary(newBook);

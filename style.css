@@ -73,6 +73,10 @@ section{
     width: 100%;
 }
 
+.red-box{
+    background-color: var(--unread-color);
+}
+
 .box:hover,
 .remove-box:hover{
     cursor: pointer;
