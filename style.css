@@ -2,6 +2,7 @@
 :root{
     --read-color: #9fff9c;
     --unread-color: #ff9c9c;
+    --remove-box-bg: #ccc;
 }
 *{
     border:0;
@@ -84,4 +85,25 @@ section{
 
 .box:hover::before{
     background-color: rgba(0, 0, 0, 0.15);
+}
+
+.remove-box{
+    background-color: var(--remove-box-bg);
+    border-radius: 5px;
+    position: relative;
+}
+
+.remove-box::before{
+    content:'';
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-radius: 5px;
+}
+
+.remove-box:hover::before{
+    background-color: rgba(255, 0, 255, 0.6);
 }
