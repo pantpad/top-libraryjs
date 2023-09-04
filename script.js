@@ -27,7 +27,7 @@ function appendBookToLibrary(book){
 const domLibrary = document.querySelector('.library');
 
 //draw all books inside the library array onto the page 
-function displayBooksOnPage(){
+function drawAllBooksOnPage(){
     myLibrary.forEach((book,index) => {
         domLibrary.appendChild(createCard(book));
     });
