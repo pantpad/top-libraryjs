@@ -73,6 +73,11 @@ section{
     width: 100%;
 }
 
+.box:hover,
+.remove-box:hover{
+    cursor: pointer;
+}
+
 .box::before{
     content:'';
     display:block;

@@ -49,6 +49,10 @@ function createCard(book){
     }
     card.querySelector('div:nth-child(4)').classList.add('box');
     card.appendChild(createDiv('REMOVE','card-item','remove-box'));
+    card.lastChild.addEventListener('click',(e) => {
+        console.log(e.target.parentElement);
+        domLibrary.removeChild(e.target.parentElement);
+    })
     return card;
 }
 
@@ -75,19 +79,9 @@ addBookBtn.addEventListener('click',(e) =>{
     const newBook = new Book(titleInput,authorInput,pagesInput,(hasBeenReadInput ? 'READ' : 'NOT READ'));
     modal.close('');
     appendBookToPage(newBook);
+    appendBookToLibrary(newBook);
 })
 
 function appendBookToPage(book){
     domLibrary.appendChild(createCard(book));
 }
-
-/* 
-    //creo nuovo libro con dati utente
-    const newBook = new Book();
-    //inserisco libro all'interno dell'array
-    appendBookToLibrary(newBook);
-    //chiudo sezione per chiedere dati ad utente
-
-    //l'aggiunta di un elemento all'array trigghera un append grafico dell'ultimo libro.
-    appendBookToPage(newBook);
-*/
