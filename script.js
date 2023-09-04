@@ -48,11 +48,11 @@ function createCard(book){
         card.appendChild(createDiv(Object.values(book).at(i),['card-item']));
     }
     card.querySelector('div:nth-child(4)').classList.add('box');
-    card.appendChild(createDiv('REMOVE','card-item','remove-box'));
-    card.lastChild.addEventListener('click',(e) => {
+    card.appendChild(createDiv('REMOVE','card-item','remove-box')).addEventListener('click',(e) => {
         console.log(e.target.parentElement);
         domLibrary.removeChild(e.target.parentElement);
-    })
+    });
+
     return card;
 }
 
