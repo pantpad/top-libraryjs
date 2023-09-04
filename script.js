@@ -14,7 +14,7 @@ Book.prototype.info = function(){
 
 const firstBook = new Book("Il signore","asdsad","333",false);
 
-const myLibrary = [];
+let myLibrary = [];
 
 //add to array
 function appendBookToLibrary(book){
@@ -43,14 +43,21 @@ function createDiv(input, ...args){
 function createCard(book){
     const card = document.createElement('div');
     card.className = 'card';
-
+    let currentTitle = '';
     for(let i = 0; i < Object.values(book).length;i++){
-        card.appendChild(createDiv(Object.values(book).at(i),['card-item']));
+        if(i==0){
+            card.appendChild(createDiv(Object.values(book).at(i),'card-item','title'));
+            currentTitle = Object.values(book).at(0);
+        }else{
+            card.appendChild(createDiv(Object.values(book).at(i),'card-item'));
+        }
     }
+
     card.querySelector('div:nth-child(4)').classList.add('box');
     card.appendChild(createDiv('REMOVE','card-item','remove-box')).addEventListener('click',(e) => {
         console.log(e.target.parentElement);
         domLibrary.removeChild(e.target.parentElement);
+        myLibrary = myLibrary.filter((book) => book.title !== currentTitle);
     });
 
     return card;
