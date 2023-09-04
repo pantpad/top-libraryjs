@@ -13,6 +13,30 @@
         <div class="button" id="addBtn">+Add Book</div>
     </div>
     <section class="library">
+        
     </section>
+    <dialog data-modal>
+        <form method="dialog" class="form-container">
+            <div>
+                <label for="title">Title</label>
+                <input type="text" placeholder="title" id="title" name="bookTitle">
+            </div>
+            <div>
+                <label for="">Author</label>
+                <input type="text" id="author">
+            </div>
+            <div>
+                <label for="">Pages</label>
+                <input type="number" name="" id="pages">
+            </div>
+            <div class="check">
+                <label for="">Read?</label>
+                <input type="checkbox" name="" id="hasBeenRead">
+            </div>
+            <div>
+                <button type="submit" class="box" id="addBook">Submit</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

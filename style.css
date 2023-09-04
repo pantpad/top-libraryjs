@@ -70,6 +70,7 @@ section{
     background-color: var(--read-color);
     border-radius: 5px;
     position: relative;
+    width: 100%;
 }
 
 .box::before{
@@ -106,4 +107,41 @@ section{
 
 .remove-box:hover::before{
     background-color: rgba(255, 0, 255, 0.6);
+}
+
+dialog{
+    margin:auto;
+    border:1px solid lightpink;
+    border-radius: 5px;
+}
+
+input{
+    outline: none;
+    border:1px solid #ccc;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    padding:1em;
+    justify-content: center;
+    gap:1em;
+}
+
+.form-container div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.form-container div.check{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+button.box{
+    padding:0.5em;
 }

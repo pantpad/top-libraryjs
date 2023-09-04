@@ -25,6 +25,9 @@ function appendBookToLibrary(book){
 
 const domLibrary = document.querySelector('.library');
 const addBtn = document.getElementById('addBtn');
+const addBookBtn = document.getElementById('addBook');
+const modal = document.querySelector('[data-modal]');
+const form = document.querySelector('form');
 
 function createDiv(input, ...args){
     const div = document.createElement('div');
@@ -58,17 +61,33 @@ function drawAllBooksOnPage(){
 
 addBtn.addEventListener('click',(e) => {
     //apro sezione per chiedere dati ad utente
-    prompt('wela inserisci');
-    //creo nuovo libro con dati utente
-
-    //inserisco libro all'interno dell'array
-    appendBookToLibrary(new Book());
-    //chiudo sezione per chiedere dati ad utente
-
-    //l'aggiunta di un elemento all'array trigghera un append grafico dell'ultimo libro.
-    appendBookToPage(new Book());
+    form.reset();
+    modal.showModal();
 });
+
+addBookBtn.addEventListener('click',(e) =>{
+    e.preventDefault();
+    const titleInput = document.getElementById('title').value;
+    const authorInput = document.getElementById('author').value;
+    const pagesInput = document.getElementById('pages').value;
+    const hasBeenReadInput = document.getElementById('hasBeenRead').value;
+
+    const newBook = new Book(titleInput,authorInput,pagesInput,(hasBeenReadInput ? 'READ' : 'NOT READ'));
+    modal.close('');
+    appendBookToPage(newBook);
+})
 
 function appendBookToPage(book){
     domLibrary.appendChild(createCard(book));
 }
+
+/* 
+    //creo nuovo libro con dati utente
+    const newBook = new Book();
+    //inserisco libro all'interno dell'array
+    appendBookToLibrary(newBook);
+    //chiudo sezione per chiedere dati ad utente
+
+    //l'aggiunta di un elemento all'array trigghera un append grafico dell'ultimo libro.
+    appendBookToPage(newBook);
+*/
