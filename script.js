@@ -19,3 +19,19 @@ const myLibrary = [];
 function appendBookToLibrary(book){
     myLibrary.push(book ?? new Book());
 }
+
+const caste = document.getElementById('library');
+
+function displayBooksOnPage(){
+    domLibrary.appendChild(createDiv('card','topolino'));
+}
+
+function createDiv(...args){
+    const div = document.createElement('div');
+
+    for(let i = 0; i < args.length; i++){
+        div.classList.add(args[i]);
+    }
+
+    return div;
+}

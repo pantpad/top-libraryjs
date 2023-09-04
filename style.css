@@ -9,5 +9,25 @@
 }
 
 section{
-    background-color: red;
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 1em;
+    border: 1px solid #ccc;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.card-item{
+    flex: 1;
 }
