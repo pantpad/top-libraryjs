@@ -1,20 +1,38 @@
 console.log('script working');
 
-//book object constructor
-function Book(title,author,pages,read){
-    this.title = title ?? 'generic book';
-    this.author = author ?? 'generic author';
-    this.pages = pages ?? 0;
-    this.read = read ?? false;
+//book class
+class Book{
+    constructor(title,author,pages,read){
+        this.title = title ?? 'generic book';
+        this.author = author ?? 'generic author';
+        this.pages = pages ?? 0;
+        this.read = read ?? false;
+    }
+    
+    info(){
+        console.log(this.title +","+ this.author +","+ this.pages +","+ this.read+".");
+    }
+    toggleRead(){
+        this.read = !this.read;
+    }
 }
 
-Book.prototype.info = function(){
-    console.log(this.title +","+ this.author +","+ this.pages +","+ this.read+".");
-}
+//book object constructor without classes
+// function Book(title,author,pages,read){
+//     this.title = title ?? 'generic book';
+//     this.author = author ?? 'generic author';
+//     this.pages = pages ?? 0;
+//     this.read = read ?? false;
+// }
 
-Book.prototype.toggleRead = function(){
-    this.read = !this.read;
-}
+
+// Book.prototype.info = function(){
+//     console.log(this.title +","+ this.author +","+ this.pages +","+ this.read+".");
+// }
+
+// Book.prototype.toggleRead = function(){
+//     this.read = !this.read;
+// }
 
 const firstBook = new Book("Il signore","asdsad","333",false);
 
