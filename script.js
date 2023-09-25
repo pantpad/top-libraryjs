@@ -17,23 +17,6 @@ class Book{
     }
 }
 
-//book object constructor without classes
-// function Book(title,author,pages,read){
-//     this.title = title ?? 'generic book';
-//     this.author = author ?? 'generic author';
-//     this.pages = pages ?? 0;
-//     this.read = read ?? false;
-// }
-
-
-// Book.prototype.info = function(){
-//     console.log(this.title +","+ this.author +","+ this.pages +","+ this.read+".");
-// }
-
-// Book.prototype.toggleRead = function(){
-//     this.read = !this.read;
-// }
-
 const firstBook = new Book("Il signore","asdsad","333",false);
 
 let myLibrary = [];
